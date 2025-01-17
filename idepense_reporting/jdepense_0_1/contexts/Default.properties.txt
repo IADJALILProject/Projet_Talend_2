@@ -1,0 +1,7 @@
+#this is context properties
+#Wed Oct 16 22:46:30 CEST 2024
+depenseFolder=C\:/PROJET_TALEND/IDEPENSE_REPORTING/INPUT/SAISIE_DEPENSE.xlsx
+dataFolder=DATA/
+encodage=UTF-8
+fieldSeparator=|
+projectFolder=C\:/PROJET_TALEND/IDEPENSE_REPORTING/

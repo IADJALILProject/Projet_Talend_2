@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Param&#232;tres du composant :" i18n.job.properties="Propri&#233;t&#233;s" i18n.job.values="Valeurs" i18n.mapper.table.for="Table de mapping de " i18n.mapper.table.properties="Propri&#233;t&#233;s de la table de mapping" i18n.job.name="Nom" i18n.tmap.matching.mode="Mode de rapprochement" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Entr&#233;es d'une table de m&#233;tadonn&#233;es" i18n.job.type="Type" i18n.mapper.table.expression="Expression" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Contrainte d'entr&#233;es de table" name="tMap_2" preview="pictures/_YFJM0JQ0Ee2wjpPjTxRLng-tMap_2-PREVIEW.bmp">
+  <parameters>
+    <column name="Statistiques du tStatCatcher">false</column>
+    <column name="Les liens de mapping s'affichent comme&#160;:">AUTO</column>
+    <column name="Chemin du r&#233;pertoire des donn&#233;es temporaires :"></column>
+    <column name="Taille maximale de la m&#233;moire tampon (nombre de lignes) :">2000000</column>
+    <column name="Ignorer les z&#233;ros de fin pour BigDecimal">true</column>
+    <column name="Afficher les informations">false</column>
+    <column name="Commentaire"><![CDATA[]]></column>
+    <column name="Utiliser une r&#232;gle de validation existante">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="detailDate" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="DT_JOUR" type="java.util.Date" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="joursFeries" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="DT_JOUR" type="java.util.Date" expression="detailDate.DT_JOUR " isNullable="true"/>
+        <entry name="LB_JOUR_FERIE" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="detailCalendrier" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="ID_DIM_CALENDRIER" type="int" expression="Integer.parseInt(TalendDate.formatDate(&quot;yyyyMMdd&quot;, detailDate.DT_JOUR)) " isNullable="false"/>
+        <entry name="DT_JOUR" type="java.util.Date" expression="detailDate.DT_JOUR " isNullable="false"/>
+        <entry name="NB_ANNEE" type="int" expression="TalendDate.getPartOfDate(&quot;YEAR&quot;, detailDate.DT_JOUR) " isNullable="false"/>
+        <entry name="NB_SEMESTRE" type="int" expression="TalendDate.getPartOfDate(&quot;MONTH&quot;, detailDate.DT_JOUR)&lt;6?1:2 " isNullable="false"/>
+        <entry name="NB_TRIMESTRE" type="int" expression="TalendDate.getPartOfDate(&quot;MONTH&quot;, detailDate.DT_JOUR)&lt;3?1:
+TalendDate.getPartOfDate(&quot;MONTH&quot;, detailDate.DT_JOUR)&lt;6?2:
+TalendDate.getPartOfDate(&quot;MONTH&quot;, detailDate.DT_JOUR)&lt;9?3:4 " isNullable="false"/>
+        <entry name="NB_MOIS" type="int" expression="TalendDate.getPartOfDate(&quot;MONTH&quot;, detailDate.DT_JOUR)+1 " isNullable="false"/>
+        <entry name="NB_JOUR_ANNEE" type="int" expression="TalendDate.getPartOfDate(&quot;DAY_OF_YEAR&quot;, detailDate.DT_JOUR) " isNullable="false"/>
+        <entry name="NB_JOUR_MOIS" type="int" expression="TalendDate.getPartOfDate(&quot;DAY_OF_MONTH&quot;, detailDate.DT_JOUR) " isNullable="false"/>
+        <entry name="NB_JOUR_SEMAINE" type="int" expression="TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)-1==0?7: TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)-1 " isNullable="false"/>
+        <entry name="NB_SEMAINE_ANNEE" type="int" expression="TalendDate.getPartOfDate(&quot;WEEK_OF_YEAR&quot;, detailDate.DT_JOUR) " isNullable="false"/>
+        <entry name="LB_MOIS" type="String" expression="TalendDate.formatDate(&quot;MMMM&quot;, detailDate.DT_JOUR).substring(0, 1).toUpperCase() + 
+
+TalendDate.formatDate(&quot;MMMM&quot;, detailDate.DT_JOUR).substring(1, TalendDate.formatDate(&quot;MMMM&quot;, detailDate.DT_JOUR).length()) " isNullable="false"/>
+        <entry name="LB_JOUR" type="String" expression="TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==2?&quot;Lundi&quot;:
+TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==3?&quot;Mardi&quot;:
+TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==4?&quot;Mercredi&quot;:
+TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==5?&quot;Jeudi&quot;:
+TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==6?&quot;Vendredi&quot;:
+TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==7?&quot;Samedi&quot;:&quot;Dimanche&quot; " isNullable="false"/>
+        <entry name="BL_DERNIER_JOUR_MOIS" type="int" expression="TalendDate.compareDate(TalendDate.getLastDayOfMonth(detailDate.DT_JOUR), detailDate.DT_JOUR,&quot;yyyy-MM-dd&quot;)==0?1:0 " isNullable="false"/>
+        <entry name="BL_BISSEXTILE" type="int" expression="((double)TalendDate.getPartOfDate(&quot;YEAR&quot;, detailDate.DT_JOUR)/4)==Math.floor(TalendDate.getPartOfDate(&quot;YEAR&quot;, detailDate.DT_JOUR)/4)?1:0 " isNullable="false"/>
+        <entry name="BL_WEEK_END" type="int" expression="TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==7
+|| TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;, detailDate.DT_JOUR)==1 ?1:0 " isNullable="false"/>
+        <entry name="BL_JOUR_FERIE" type="int" expression="joursFeries.DT_JOUR==null?0:1 " isNullable="false"/>
+        <entry name="LB_JOUR_FERIE" type="String" expression="joursFeries.DT_JOUR==null?&quot;&quot;:joursFeries.LB_JOUR_FERIE " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null"/>
+  </mapperTable>
+</externalNode>

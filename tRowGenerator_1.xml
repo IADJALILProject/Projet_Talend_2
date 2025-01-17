@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Param&#232;tres du composant :" i18n.job.properties="Propri&#233;t&#233;s" i18n.job.values="Valeurs" i18n.rowgenerator.info.for="Informations du g&#233;n&#233;rateur de lignes de " i18n.job.column="Colonne" i18n.job.key="Cl&#233;" i18n.job.type="Type" i18n.job.nullable="Nullable" i18n.job.length="Longueur" i18n.job.precision="Pr&#233;cision" i18n.rowgenerator.default="Par d&#233;faut" i18n.job.comment="Commentaire" i18n.rowgenerator.functions="Fonctions" i18n.rowgenerator.parameters="Param&#232;tres" name="tRowGenerator_1" preview="">
+  <parameters>
+    <column name="Statistiques du tStatCatcher">false</column>
+    <column name="Afficher les informations">false</column>
+    <column name="Commentaire"><![CDATA[]]></column>
+    <column name="Utiliser une r&#232;gle de validation existante">false</column>
+  </parameters>
+  <column name="NUM_LIGNE" key="false" type="Integer" nullable="true" length="" precision="" default="" comment="" functions="sequence(s1 ,0 ,1 )" parameters=""/>
+</externalNode>

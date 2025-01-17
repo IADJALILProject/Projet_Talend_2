@@ -1,0 +1,13 @@
+#this is context properties
+#Fri Oct 18 20:25:00 CEST 2024
+aditionnalParam=
+database=IDEPENSE_INGESTION_DB
+password=enc\:routine.encryption.key.v1\:ptzyq+SzHL7yugdESu2ai13iosuu/ZRCfAATPb2+CpHL6jIVTw\=\=
+port=5432
+schema_ods=PARAMS_LOG
+ServerName=localhost
+utilisateur=postgres
+dataFolder=DATA/
+encodage=UTF-8
+fieldSeparator=|
+projectFolder=C\:/PROJET_TALEND/IDEPENSE_REPORTING/
